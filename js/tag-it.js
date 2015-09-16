@@ -383,10 +383,16 @@
                 }
             } else {
                 this._tags().each(function() {
+                    if($(this).css('opacity') !== '0.4') {
                     tags.push(that.tagLabel(this));
+                    }
                 });
             }
             return tags;
+        },
+        
+        getTags: function() {
+            return this._tags();
         },
 
         _updateSingleTagsField: function(tags) {
@@ -444,7 +450,7 @@
             return Boolean($.effects && ($.effects[name] || ($.effects.effect && $.effects.effect[name])));
         },
 
-        createTag: function(value, additionalClass, duringInitialization) {
+        createTag: function(value,data, additionalClass, duringInitialization) {
             var that = this;
 
             value = $.trim(value);
@@ -482,6 +488,8 @@
                 .addClass('tagit-choice ui-widget-content ui-state-default ui-corner-all')
                 .addClass(additionalClass)
                 .append(label);
+        
+            tag.data('properties', data);
 
             if (this.options.readOnly){
                 tag.addClass('tagit-choice-read-only');
