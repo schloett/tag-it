@@ -451,6 +451,11 @@
         },
 
         createTag: function(value,data, additionalClass, duringInitialization) {
+            if(typeof data === 'undefined') {
+                data = {
+                    text:value
+                };
+            }
             var that = this;
 
             value = $.trim(value);
