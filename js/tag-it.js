@@ -383,12 +383,20 @@
                 }
             } else {
                 this._tags().each(function() {
-                    if($(this).css('opacity') !== '0.4') {
                     tags.push(that.tagLabel(this));
-                    }
                 });
             }
             return tags;
+        },
+                
+        getActiveTagsProperties: function() {
+            var props = [];
+            $.each(this._tags(), function(){
+                if($(this).css('opacity') !== '0.4') {
+                    props.push($(this).data('properties'));
+                }
+            });
+            return props;
         },
         
         getTags: function() {
