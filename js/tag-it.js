@@ -502,6 +502,7 @@
                 .addClass(additionalClass)
                 .append(label);
         
+            data.isMainTopic = false;
             tag.data('properties', data);
 
             if (this.options.readOnly){
