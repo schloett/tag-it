@@ -607,6 +607,10 @@
             }
             this.removeTag(toRemove, animate);
         },
+        
+        getTagsByLabels: function(tagLabels) {
+            console.log(this._tags());
+        },
 
         removeAll: function() {
             // Removes all tags.
