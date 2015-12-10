@@ -609,7 +609,18 @@
         },
         
         getTagsByLabels: function(tagLabels) {
-            console.log(this._tags());
+            var that = this;
+            var tags = new Set();
+            this._tags().each(function(i){
+                    var tl = that.tagLabel(this).toLowerCase();
+                for(var x=0;x<tagLabels.length;x++) {
+                    if(tl.indexOf(tagLabels[x].toLowerCase()) !== -1) {
+                        tags.add(this);
+                        break;
+                    }
+                }
+            }); 
+            return tags;
         },
 
         removeAll: function() {
